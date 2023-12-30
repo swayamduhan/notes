@@ -1,0 +1,187 @@
+{
+  "main": {
+    "id": "62cc51314ab8f7b8",
+    "type": "split",
+    "children": [
+      {
+        "id": "1ef08417a82a2814",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c114f23fbb49d9cd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Git and GitHub.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2648eaa989deb103",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "BACKEND DEVELOPMENT.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c2d42e319c0f8d51",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Git and GitHub.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "20541b9b91e8420a",
+    "type": "split",
+    "children": [
+      {
+        "id": "2c724559c148a9e6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3fc39f2afdca868b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "ae891632e24e2609",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "fecfa1f6c8ee6564",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 201.5
+  },
+  "right": {
+    "id": "935076201b98393a",
+    "type": "split",
+    "children": [
+      {
+        "id": "0d1f7e7a7a0d85e2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c3e9d8dc8beaffea",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Git and GitHub.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b7d32281f038c03c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Git and GitHub.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "3430cd6368ec54bc",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "3998f1758da776eb",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Git and GitHub.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "c2d42e319c0f8d51",
+  "lastOpenFiles": [
+    "ALL INSTALLATIONS.md",
+    "BACKEND DEVELOPMENT.md",
+    "BASH and Commands.md",
+    "JAVASCRIPT (only stuff that i found worth writing).md",
+    "Databases.md",
+    "Git and GitHub.md",
+    "SOME BASIC METHODS.md",
+    "Untitled.canvas",
+    "2023-12-20.md",
+    "Untitled"
+  ]
+}
