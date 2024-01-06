@@ -1,64 +1,53 @@
 {
   "main": {
-    "id": "62cc51314ab8f7b8",
+    "id": "512b2e01fb2a383f",
     "type": "split",
     "children": [
       {
-        "id": "1ef08417a82a2814",
+        "id": "c7d9aeeaa55b17f8",
         "type": "tabs",
         "children": [
           {
-            "id": "c114f23fbb49d9cd",
+            "id": "837681acbe467f56",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Git and GitHub.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "2648eaa989deb103",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "BACKEND DEVELOPMENT.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "c2d42e319c0f8d51",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Databases.md",
+                "file": "Welcome.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
+      },
+      {
+        "id": "425e618a992d06e9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a2652258a5f937f0",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "20541b9b91e8420a",
+    "id": "16b59e813a578a8d",
     "type": "split",
     "children": [
       {
-        "id": "2c724559c148a9e6",
+        "id": "4325bea2c0770c60",
         "type": "tabs",
         "children": [
           {
-            "id": "3fc39f2afdca868b",
+            "id": "302bce705b555009",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -68,7 +57,7 @@
             }
           },
           {
-            "id": "ae891632e24e2609",
+            "id": "3d93978d06b30793",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -83,7 +72,7 @@
             }
           },
           {
-            "id": "fecfa1f6c8ee6564",
+            "id": "9ed3aa82653aaa88",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -94,23 +83,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 201.5
+    "width": 300
   },
   "right": {
-    "id": "935076201b98393a",
+    "id": "327f146503deb155",
     "type": "split",
     "children": [
       {
-        "id": "0d1f7e7a7a0d85e2",
+        "id": "d8c06a7e06c885f7",
         "type": "tabs",
         "children": [
           {
-            "id": "c3e9d8dc8beaffea",
+            "id": "05746a5803a49ec2",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "BACKEND DEVELOPMENT.md",
+                "file": "Welcome.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,19 +111,19 @@
             }
           },
           {
-            "id": "b7d32281f038c03c",
+            "id": "65ad8a8402f47cef",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "BACKEND DEVELOPMENT.md",
+                "file": "Welcome.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "3430cd6368ec54bc",
+            "id": "8b9137c75c1e44d7",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -145,12 +134,12 @@
             }
           },
           {
-            "id": "3998f1758da776eb",
+            "id": "c04d5ca9e86711b4",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "BACKEND DEVELOPMENT.md"
+                "file": "Welcome.md"
               }
             }
           }
@@ -171,17 +160,8 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2648eaa989deb103",
+  "active": "837681acbe467f56",
   "lastOpenFiles": [
-    "Databases.md",
-    "Git and GitHub.md",
-    "BACKEND DEVELOPMENT.md",
-    "ALL INSTALLATIONS.md",
-    "BASH and Commands.md",
-    "JAVASCRIPT (only stuff that i found worth writing).md",
-    "SOME BASIC METHODS.md",
-    "Untitled.canvas",
-    "2023-12-20.md",
-    "Untitled"
+    "Welcome.md"
   ]
 }

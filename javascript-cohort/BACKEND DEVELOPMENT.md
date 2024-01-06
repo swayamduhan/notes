@@ -334,3 +334,62 @@ this is present in authentication header in a http request. everytime you send a
 The JWT Token given to us is stored in the local storage of the browser. this is sent along at every request to the website. When we are logged out of website, this JWT token gets removed from local storage. 
 There is another method for authentication using Cookies, it will be discussed later.
 
+#### Using JWT Tokens
+we use the jsonwebtoken library
+for example, when signing in (post request), check if the username and password match in the database, if yes then do `jwt.sign(<json_value_to_encode>, <jwt_password>)` this will return a token that can be decoded by anyone [here](jwt.io) (so should not contain password). 
+later when any request is sent, this token is sent in the headers in authorization, then we do 
+`jwt.verify(<token>, <password>)` this will return the decoded json. this can be used to verify the user.
+eg : 
+```
+const jwt = require("jsonwebtoken");
+const express = require("express");
+const jwtPass = "Sw@y4m";
+
+const app = express();
+app.use(express.json());
+
+const ALL_USERS = [
+  // in memory database
+  {
+    name: "swayam",
+    password: "swayam10",
+  },
+  {
+    name: "dawg",
+    password: "dawgfawg",
+  },
+  {
+    name: "john",
+    password: "johndeere",
+  },
+];
+
+function userExists(username, password) {   // you can use a different method for this
+  return ALL_USERS.some(
+    (user) => user.name === username && user.password === password,
+  ); //returns true or false
+}
+
+app.post("/signin", (req, res) => {
+  const { username, password } = req.body;
+  if (!userExists(username, password)) {
+    return res.status(401).json({ message: "Invalid credentials" });
+  }
+
+  let token = jwt.sign({ username }, jwtPass);
+  res.status(200).json({ token });
+});
+
+app.get('/users', (req,res)=>{
+  const token = req.headers.authorization;
+  try{
+    const decoded = jwt.verify(token, jwtPass);
+    res.status(200).json({message: "success", ALL_USERS})
+  }catch(err){
+    res.status(401).json({msg : "invalid token"})
+  }
+})
+
+app.listen(3000);
+
+```
