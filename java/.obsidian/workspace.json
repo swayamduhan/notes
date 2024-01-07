@@ -4,36 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "c7d9aeeaa55b17f8",
+        "id": "8595e73bde9222cd",
         "type": "tabs",
         "children": [
           {
-            "id": "837681acbe467f56",
+            "id": "cd0c80827b724d27",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Welcome.md",
+                "file": "Starting Off.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0803fcb980f85853",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Starting Off.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
-      },
-      {
-        "id": "425e618a992d06e9",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "a2652258a5f937f0",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -99,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Welcome.md",
+                "file": "Starting Off.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Welcome.md",
+                "file": "Starting Off.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Welcome.md"
+                "file": "Starting Off.md"
               }
             }
           }
@@ -160,8 +159,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "837681acbe467f56",
+  "active": "0803fcb980f85853",
   "lastOpenFiles": [
-    "Welcome.md"
+    "Writing Java.md",
+    "Starting Off.md",
+    "Untitled.canvas"
   ]
 }
