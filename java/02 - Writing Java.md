@@ -50,10 +50,15 @@ doesn't work with 0 and 1 as value
 - we can also perform arithmetic on character literals
 	eg : `char myChar  ='A'` then `myChar++` gives `B`
 	keep in mind, java treats them as their ASCII unicode codes and performs on that. here, A is 65 and B is 66
+- to simply swap variables, we can use a 3rd variable, `x, y = y,x` doesnt work here.
+	eg : `temp = a; a = b; b = temp;` 
 
 
 ***Rest of the shit comes in Reference Data Types (later)***
 
+### Primitive vs Reference 
+- primitive hold data, have 1 value, use less memory and are fast
+- reference hold address, have multiple values, use more memory and slow
 ## Type Conversion and Casting
   
 #### Type conversion :
@@ -168,3 +173,65 @@ for (int num : numbers) {
 ```
 
 - `continue` skips the current iteration for a particular condition and `break` stops the execution of the loop
+
+
+## Arrays
+In Java, an array is a data structure that allows you to store multiple values of the same type in a single variable. Arrays are used to organize and access a collection of elements efficiently. Here are some key points about arrays in Java:
+
+**DECLARATION AND INITIALISATION**
+```
+// Declaration of an array (integers)
+int[] numbers;
+
+// Initialization of the array with size 5
+numbers = new int[5];
+
+// Declaration and initialization in one line
+int[] numbers = new int[5];
+```
+
+- we can also write `int num[]` instead of `int[] num`. the code written above is java standard convention but this syntax is also valid for compatibility with C and C++ language. 
+
+
+**INITIALISATION WITH VALUES**
+```
+// Initialization with values
+int[] numbers = {1, 2, 3, 4, 5};
+```
+
+**ACCESSING ELEMENTS**
+```
+int[] numbers = {1, 2, 3, 4, 5};
+
+// Accessing elements
+int firstElement = numbers[0]; // Access the first element (index 0)
+int thirdElement = numbers[2]; // Access the third element (index 2)
+```
+
+- `arrayName.length` for its length
+
+### Multidimensional 2-D Array (MATRIX)
+
+```
+// Declaration and initialization of a 2D array
+int[][] matrix = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+```
+
+### Advanced Method for iterating through array
+```
+import java.util.Arrays;
+
+int[] numbers = {5, 2, 8, 1, 3};
+
+// Sorting the array
+Arrays.sort(numbers);
+
+// Enhanced for loop to iterate through the sorted array
+for (int num : numbers) {
+    System.out.println(num);
+}
+```
