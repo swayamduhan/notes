@@ -64,7 +64,7 @@ doesn't work with 0 and 1 as value
 #### Type conversion :
 In type conversion, a data type is automatically converted into another data type by a compiler at the compiler time. In type conversion, the destination data type cannot be smaller than the source data type, that’s why it is also called widening conversion. One more important thing is that it can only be applied to compatible data types.
 eg : 
-```
+```java
 int x = 1000;
 double y;
 y = x;  // 1000.000000
@@ -74,7 +74,7 @@ y = x;  // 1000.000000
 In typing casting, a data type is converted into another data type by the programmer using the casting operator during the program design. In typing casting, the destination data type may be smaller than the source data type when converting the data type to another data type, that’s why it is also called narrowing conversion.
 syntax - `destination_datatype = (target_datatype)variable`
 eg : 
-```
+```java
 byte b = 127;
 int a = 12;
 b = byte(a);
@@ -95,7 +95,7 @@ while converting float to int, we lose the decimal
 
 ## Conditional Statements
 code syntax -
-```
+```java
 int a = 9;  
 if (a > 15) {  
     System.out.println("Hello");  
@@ -110,7 +110,7 @@ the curly brackets are optional if we have only 1 line of code in the statement
 eg - `if (a<16) System.out.print("cool")`
 
 - we can also use ***terniary operator*** like JS
-```
+```java
 result = (condition) ? valueIfTrue : valueIfFalse;
 ```
 
@@ -118,7 +118,7 @@ result = (condition) ? valueIfTrue : valueIfFalse;
 its an alternative for using multiple if else statements
 
 eg :
-```
+```java
 int dayOfWeek = 3;
 String dayName;
 
@@ -165,7 +165,7 @@ the `break` keyword is used to break out of the switch, if we dont, then all the
 `for`, `while`, `do while`  same as JS
 
 for-each loop for iterating over items of an array
-```
+```java
 int[] numbers = {1, 2, 3, 4, 5};
 for (int num : numbers) {
     System.out.println("Number: " + num);
@@ -179,7 +179,7 @@ for (int num : numbers) {
 In Java, an array is a data structure that allows you to store multiple values of the same type in a single variable. Arrays are used to organize and access a collection of elements efficiently. Here are some key points about arrays in Java:
 
 **DECLARATION AND INITIALISATION**
-```
+```java
 // Declaration of an array (integers)
 int[] numbers;
 
@@ -194,13 +194,13 @@ int[] numbers = new int[5];
 
 
 **INITIALISATION WITH VALUES**
-```
+```java
 // Initialization with values
 int[] numbers = {1, 2, 3, 4, 5};
 ```
 
 **ACCESSING ELEMENTS**
-```
+```java
 int[] numbers = {1, 2, 3, 4, 5};
 
 // Accessing elements
@@ -210,19 +210,31 @@ int thirdElement = numbers[2]; // Access the third element (index 2)
 
 - `arrayName.length` for its length
 
-### Multidimensional 2-D Array (MATRIX)
+### Multidimensional Array (MATRIX)
 
-```
+```java
 // Declaration and initialization of a 2D array
 int[][] matrix = {
-    {1, 2, 3},
-    {4, 5, 6},
-    {7, 8, 9}
+    {1, 2, 3, 4},
+    {5, 6, 7, 8},
+    {9, 10, 11, 12}
 };
 ```
 
-### Advanced Method for iterating through array
+**Creating a new 2-D Array**
+```java
+int[][] myArray = new int[3][4];
 ```
+This will create a new matrix with 3 rows(outer array with 3 arrays inside) and 4 columns (each inside array has 4 items). the same presentation as the example above this
+
+**3-D Array**
+```java
+int[][][] = new int[2][3][2];
+```
+bas number of square brackets badate jao
+
+### Advanced Method for iterating through array
+```java
 import java.util.Arrays;
 
 int[] numbers = {5, 2, 8, 1, 3};
@@ -235,3 +247,113 @@ for (int num : numbers) {
     System.out.println(num);
 }
 ```
+
+### How to print an array?
+If you try to do `System.out.print(array_name)` then it will print the **memory address** of the array.
+to print we need to use the `Arrays.toString()` method in library
+```java
+import java.util.Arrays;  
+  
+public class Main {  
+    public static void main(String[] args) {  
+        int[] nums = {1, 2, 3};  
+        System.out.println(Arrays.toString(nums));  
+    }  
+}
+```
+
+**HOW TO PRINT IN A MATRIX FORM**
+```java
+int[][] numbers = new int[3][4];  
+for (int i=0; i < numbers.length; i++){  
+    for (int j=0; j < numbers[0].length; j++){  
+        System.out.print(numbers[i][j] + " ");  
+    }  
+    System.out.println();  
+}
+```
+
+### More on arrays
+**WHAT IS A JAGGED ARRAY**
+It is an 2D array in which the sub arrays an have different lengths.
+either simply create an array or use the `new` keyword to create a new array using the method below.
+
+```java
+int nums[][] = new int[3][];
+nums[0] = new int[2];
+nums[1] = new int[5];
+nums[2] = new int[3];
+```
+
+**DRAWBACKS OF USING ARRAYS
+- an array with different data types cannot be created. If you need to store elements of different data types, you would need to use an array of objects (e.g., `Object[]`), leading to the loss of type safety.
+- the size of the array cant be changed later, rather we need to create a new array and copy all previous items there - time taking and consumes extra memory
+- searching and filtering takes time
+- no built-in methods for insertion and deletion
+**NOTE** : the solution to this is *COLLECTIONS*
+
+
+**CREATING AN ARRAY OF CLASS INSTANCES**
+eg : we have a class named 'Student' then,
+```java
+Student s1 = new Student();
+Student s2 = new Student();
+Student s3 = new Student();
+
+Student[] students = new Student[3];
+students[0] = s1;
+students[1] = s2;
+students[2] = s3;
+
+// OR SIMPLY WE CAN DO
+Student[] students = {s1,s2,s3};
+```
+
+
+## Strings
+String is a type of class and also begins with a capital letter 
+2 ways of defining string are - 
+```java
+String name = new String("Swayam") // regular way of creating an instance
+
+String name = "Swayam"; // commonly used
+```
+
+- we can concatenate using `+` operator
+- we can get the letter at any index using `stringName.charAt(index)`
+- by default, strings are immutable, a new string is created when you perform an operation on a string, you get a new reference for the variable
+- all the strings are stored inside STRING CONSTANT POOL inside JVM
+- **YOU CAN READ ALL METHODS ONLINE OR IN AN IDE**
+
+**HOW ARE STRINGS CREATED INSIDE POOL**
+whenever a new string is created, it first checks if it already exists, if it does then it does not create a new object and instead just assigns the variable to that existing string.
+if doesnt exist then a new string object is created. 
+the address of that particular string is then used to refer the variable to the string :)
+
+**HASHCODE**
+The `hashCode()` method returns a 32-bit signed integer hash code for the string.
+
+```java
+String name = "Swayam";
+int hash = name.hashCode();
+```
+
+### Creating Mutable Strings
+  
+1. **StringBuffer**
+	the capacity is 16 bytes ( `str.capacity()` ) and changes as per string
+	```java
+	StringBuffer name = new StringBuffer("swayam");
+	// now you can use methods like insert, delete, append
+     ```
+ 2. **StringBuilder**
+	 the default capacity is 16 bytes and changes as per string, same syntax as above
+
+to convert this shit into string, use `str.toString()`
+
+Both `StringBuilder` and `StringBuffer` are mutable, but there is a key difference between them:
+
+- `StringBuilder` is not thread-safe, and it is more efficient in single-threaded scenarios.
+- `StringBuffer` is thread-safe, which means it can be safely used in multi-threaded environments. However, its operations are synchronized, which may lead to lower performance compared to `StringBuilder` in single-threaded scenarios.
+
+Choose between `StringBuilder` and `StringBuffer` based on your specific requirements regarding thread safety. If you are working in a single-threaded environment, `StringBuilder` is often preferred for its better performance.

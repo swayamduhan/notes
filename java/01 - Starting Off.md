@@ -13,7 +13,7 @@ You write Java Code, then compile it using Javac into bytecode then you run it u
 we dont directly convert java code into object code as it is machine specific (windows ka sirf windows pe chalega), so we first convert into bytecode with `.class` extension which is cross platform
 
 ## Hello World Program
-```
+```java
 class Main
 {
     public static void main(String[] args) 
@@ -27,6 +27,7 @@ class Main
  - we can write any of `String[] args` or `String args[]` . the usually used is the first one, it is a matter of personal preference. any variable name can be used instead of `args`
  - A class is a object of related code (will be explained later in OOP)
  -  `print` doesn't print stuff in newlines while `println`(short for print line) has `\n` at end of line to print in different lines
+ - an empty `println()` will simply print a new line character
  - Semicolons are necessary at the end of a line 
 
 - you can also do direct arithmetic in print like any other language
