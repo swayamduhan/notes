@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02 - Writing Java.md",
+                "file": "01 - Starting Off.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02 - Writing Java.md",
+                "file": "01 - Starting Off.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02 - Writing Java.md",
+                "file": "01 - Starting Off.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02 - Writing Java.md"
+                "file": "01 - Starting Off.md"
               }
             }
           }
@@ -148,10 +148,10 @@
   },
   "active": "65ed6f03aeca7274",
   "lastOpenFiles": [
-    "01 - Starting Off.md",
-    "02 - Writing Java.md",
-    "03 - Object Oriented Programming.md",
     "Extra Stuff.md",
+    "03 - Object Oriented Programming.md",
+    "02 - Writing Java.md",
+    "01 - Starting Off.md",
     "Untitled.canvas"
   ]
 }

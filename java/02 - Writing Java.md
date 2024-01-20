@@ -1,3 +1,7 @@
+## Conventions
+camelCase for variables and methods
+first letter capital for class
+all caps for constants
 ## Variables 
 - to store values and use in code
 - the basic syntax is `<datatype> <variablename> = value`
