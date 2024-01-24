@@ -247,9 +247,12 @@ Here is a list of common format specifiers used in the `printf` function:
 	- Left Align `printf("%-100d %d", num, num+1);` adds whitespaces to the right to align to the left
 	- Zero Padding `printf("%06d", num);` pads with zeroes instead of whitespaces
 
-## Operators
-`+` addition, `-` subtraction , `/` division, `*` multiply  , `--` decrement , `++` increment, `%` modulus, `+=` and `-=` are also there
+## Arithmetic & Assignment Operators
+`+` addition, `-` subtraction , `/` division, `*` multiply  , `--` decrement , `++` increment, `%` modulus
+
+`+=`, `*=`, `/=` and `-=` are also available for assignment
 - there is no such thing as floor division `//` because the normal division itself is floor if we have int data type eg : `int x = 10; int y = 4;` then x/y = 2 instead of 2.5 because int cannot have decimals
+- there is no operator for doing power, we have `pow` which is discussed in [[#Useful MATH Functions]]
 
 **HOW TO GET DECIMALS THEN??**
 convert denominator and final reference variable to float
@@ -296,6 +299,8 @@ here, you will have to input `swayam dawg duhan` for it to read data correctly
 ## Strings
 - array of characters, terminated by null character `\0`
 ```c 
+// initializing
+char greeting[20]; // mentioning size is necessary
 // declaring
 char greeting[6] = {'H', 'e', 'l', 'l', 'o', '\0'}; 
 // or 
@@ -358,3 +363,247 @@ int main()
 ***NOTE :*** when you take input by `fgets` method, the last character `\n` is captured by the method and is given as the last character of string
 so to fix it we can do :  (simple text formatting)
 `strname[strlen(strname) - 1] = '\0'`, dont forget to `#include <string.h>` at the top
+
+- to convert to uppercase, you can use `toupper()` method
+
+## Useful MATH Functions
+to use, do `#include <math.h>`
+
+```c
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    double a = sqrt(9);  // for sqaure root
+    double b = pow(5,2); // for power
+    int c = round(3.6); // for rounding off
+    int d = ceil(3.2); //  for round up to next number
+    int e = floor(3.8); // for round down
+    double f = fabs(-100); // for absolute value
+    double g = log(2); // natural log (ln)
+    double h = sin(45);
+    double i = cos(45);
+    double j = tan(45*M_PI/180); // M_PI represents value of pi
+    printf("%lf", g);
+    return 0;
+}
+```
+
+similar to `M_PI`, we have `INFINITY` for infinity and `-INFINITY` for negative infinity
+
+## Other Operators
+**RELATIONAL OPERATORS**
+`==`, `!=`, `<`, `<=`, `>`, `>=`
+
+**LOGICAL OPERATORS**
+`&&` - AND, `||` - OR, `!` - NOT
+
+**BITWISE OPERATORS**
+they are used to perform operations at bit level, the bits of both numbers get lined up when 2 number manipulation is present
+1. Bitwise AND (`&`) - agar dono 1 hai to 1 nahi to 0. 
+2. Bitwise OR(`|`) - ek bhi 1 hai to 1, agar dono 0 hai to 0
+3. Bitwise XOR(`^`) - agar dono ke bits alag hain to 1, nahi to 0.
+4. Bitwise NOT(`~`) - number ke bits ko flip krdeta(0 ka 1, 1 ka 0).
+5. Left Shift (`<<`) - shifts bits of left operand to left by specified number `num << 2`, this means multiplication by 2^2.
+6. Right Shift(`>>`) - shifts to the right, division by 2 to the power specified num
+
+## Conditional Statements
+- if-else same as java, terniary operator `?` also available
+- **switch case** statements also same as java
+
+## Functions in C
+`int main()` itself is a function that the compiler finds to run the program
+to define a function, `returnType funcName(args){}`
+`void` for no return shit
+
+```c
+#include <stdio.h>
+
+double square(double x){
+    return x*x;
+}
+
+int main()
+{
+    double squared = square(5);
+    printf("%lf", squared);
+    return 0;
+```
+
+when you call the function before defining it, you can run into some errors like 
+- c doesnt care about if all the arguments have been given in the function or not, it will still compile and execute and give partial result. 
+- it will give random errors like implicit function declaration, type mismatch and undefined reference
+
+## Function Prototypes
+- it is a function declaration without a body before main
+- it ensures that call to the function is made with correct arguments
+- no issues of maintaining function order
+
+```c
+#include <stdio.h>
+
+double square(double x, double num); // args ka naam same hona zaruri ni hai, chahe mention hi mat karo var names
+
+int main()
+{
+    double squared = square(5,10);
+    printf("%.lf", squared);
+    return 0;
+}
+
+double square(double x, double num){
+    printf("\nYour number is %.lf\n", num);
+    return x*x;
+}
+```
+
+## Some String Functions
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char name[] = "Swayam";
+    char lname[] = "Duhan";
+
+    strupr(name); // to uppercase
+    strlwr(name); // to lowercase
+    strcat(name, lname); // appends string2 to string1
+    strncat(name, lname, 3); // appends n characters from s2 to s1
+    strcpy(name, lname); // copies s2 to s1
+    strncpy(name, lname, 3); // copies n chars from s2 to s1
+
+    strset(name, '?'); // changes all letters of string to specified letter
+    strnset(name, '?', 3); // changes first n letters
+    strrev(name); // reverses a string
+    printf("%s", name);
+
+    int result = strlen(name); // length of string
+    int result = strcmp(name, lname); // returns 0 if strings equal , read more online
+    int result = strncmp(name, lname, 2); // compares first n chars
+    int result = strcmpi(name, lname); // ignores case and compares (not case sensitive)
+    int result = strnicmp(name, lname, 2); // ignores case and compares n chars
+    
+    printf("%d", result);
+    return 0;
+}
+```
+
+- more string methods are available but before that we should understand pointers
+
+## Loops
+- for, while, do while, break, continue same as java
+
+## Arrays
+- a structure to store many values of the same data type
+
+**TO DECLARE**
+```c
+double prices[] = {1.0, 15.0, 6.0, 5.5};
+```
+**TO INITIALISE AND THEN SET VALUE**
+```c
+double prices[5];
+prices[1] = 5.5;
+```
+**HOW TO GET THE LENGTH OF AN ARRAY??**
+- the `sizeof()` function will return the byte size of the array , i.e, size of data type multiplied by number of items
+- so to get the length, we can divide size of array in bytes by size of the data type in bytes
+```c
+#include <stdio.h>
+int main()
+{
+    double prices[] = {5.0, 5.5, 10.2, 15.0};
+    int length = sizeof(prices)/sizeof(double); // or sizeof(prices[0]) instead of double
+    printf("%d", length);
+    return 0;
+}
+```
+
+**2D ARRAYS**
+- in C, it is not necessary to specify number of rows. only columns are necessary
+```C
+int nums[3][2]; // initialization (rows, columns)
+int numbers[][] = {{1,2,3}, {4,5,6}, {7,8,9}};
+```
+
+**PRINTING 2D ARRAYS**
+```C
+#include <stdio.h>
+
+int main()
+{
+    int nums[][3] = {{1,2,3}, {4,5,6}, {7,8,9}, {10,11,12}};
+    int rows = sizeof(nums)/sizeof(nums[0]);
+    int columns = sizeof(nums[0])/sizeof(nums[0][0]);
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < columns; j++){
+            printf("  %d  ", nums[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+```
+
+## Array Of Strings
+- it is a 2d array of char
+eg : 
+```c
+#include <stdio.h>
+
+int main()
+{
+    char cars[][20] = {"Mustang", "Ford", "Camaro", "Lambo"};
+    int length = sizeof(cars);
+    printf("%d", length);
+    return 0;
+}
+```
+- use `strlen(cars[0])` to get the length of a specific string, in the above example the sizeof will return 20 while strlen will return actual string length
+- however, `cars[1] = "Dodge"` is not possible directly like normal arrays, instead we have to use the strcpy method in the below way
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char cars[][20] = {"Mustang", "Ford", "Camaro", "Lambo"};
+    strcpy(cars[0], "Dodge");
+    printf("%s", cars[0]);  // prints Dodge
+    return 0;
+}
+```
+
+
+## Swapping 2 Variables
+```c
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char a[15] = "hello";
+    char b[15] = "bye";
+    char temp[15];
+    strcpy(temp, a);
+    strcpy(a, b);
+    strcpy(b, temp);
+    printf("a is %s and b is %s", a, b);
+}
+```
+- here, if we dont mention the array size in brackets then we will run into an error when size of a is bigger than b.
+
+## Using BUBBLE SORT to sort an array
+
+- the basic concept is to check the numbers at the current index and the next index, if aage wala chota hai to swap kardo
+- this will make the biggest number go to the end and smallest in beginning
+- by ChatGPT, Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. The algorithm gets its name because smaller elements "bubble" to the top of the list.
+- it is very slow and complex and suitable for only educational purposes (easy shit) and small datasets
+
+```c
+
+```
