@@ -603,7 +603,143 @@ int main()
 - this will make the biggest number go to the end and smallest in beginning
 - by ChatGPT, Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. The algorithm gets its name because smaller elements "bubble" to the top of the list.
 - it is very slow and complex and suitable for only educational purposes (easy shit) and small datasets
+- time complexity : O(n^2)
 
 ```c
+#include <stdio.h>
 
+int main()
+{
+    int nums[] = {6,3,7,2,5,11,10};
+    int length = sizeof(nums)/sizeof(int);
+    for(int j = 0; j < length - 1; j++){
+        for(int i = 0; i < length - 1; i++){
+            if (nums[i] > nums[i+1]){
+                int temp = nums[i];
+                nums[i] = nums[i+1];
+                nums[i+1] = temp;
+            }
+        }
+    }
+
+    for(int i = 0; i < length; i++){
+        printf("\n%d", nums[i]);
+    }
+    return 0;
+}
 ```
+
+we need 2 loops for this, it will iterate through the array length - 1 times and in each iteration swap the larger number by the smaller number as explained above
+in each iteration, the largest number gets placed at the end 
+basically, in the first iteration 11 will be pushed all the way back to the last
+
+**OPTIMISING BUBBLE SORT** - 
+we can reduce the workload and execution time by doing `i < length - j - 1` in the code
+WHY?? because in each iteration the large number gets placed at the last and we need not check for it again
+logic : after first iteration, the last element will be 11 
+in the second iteration, the last if statement will check if 10 > 11 which is completely unnecessary 
+so, after every n iterations, n large elements get placed at the end
+
+## Structs
+(similar to structs in solidity)
+- collection of related members (different variables) under one name
+- very similar to classes in other languages but doesnt have any methods
+- listed under one name in a block of memory
+- can be of different data types
+
+```c
+#include <stdio.h>
+#include <string.h>
+
+struct Person
+{
+    char name[25];
+    int age;
+};
+
+int main()
+{
+    struct Person person1;
+    person1.age = 18;
+    strcpy(person1.name, "Swayam");
+    printf("\nYour name is %s and age is %d", person1.name, person1.age);
+    return 0;
+}
+```
+- here, person1 is the name of an instance of Person struct
+
+**TO INITIALISE WITH VALUES IN A SINGLE LINE**
+```c
+struct Person person1 = {"Swayam", 18};
+printf("\nYour name is %s and age is %d", person1.name, person1.age);
+```
+in the above example the order in which you pass info matters
+
+```c
+ struct Person person1 = {
+        .age = 18,
+         .name = "swayam"
+         };
+printf("\nYour name is %s and age is %d", person1.name, person1.age);
+```
+in this way, you need to specify which argument you are giving
+
+- we can also create an array of structs like other languages
+
+## Typedef 
+- used to give an existing data type a nickname
+- useful to reduce number of words typed (no special use case as such)
+- makes code more readable
+
+simple use - 
+```c
+#include <stdio.h>
+
+typedef int myInt;
+int main()
+{
+    myInt num = 25;
+    printf("%d\n", num);
+    hello();
+    return 0;
+}
+
+void hello()
+{
+    myInt num = 20;
+    printf("%d", num);
+}
+```
+as seen in the code above, you should define it outside the main function so that other functions can also use it.
+
+usage with strings - 
+```c
+#include <stdio.h>
+typedef char User[25];
+int main()
+{
+    User user1 = "swayam";
+    printf("%s\n", name);
+    return 0;
+}
+```
+
+usage with structs - 
+```c
+#include <stdio.h>
+typedef struct
+{
+    int x;
+    int y;
+} Num; 
+
+int main()
+{
+    Num nums = {5, 7};    // here the whole syntax of struct <name> is replaced by Num
+    printf("%d %d", nums.x, nums.y);
+    return 0;
+}
+```
+
+
+# enum
