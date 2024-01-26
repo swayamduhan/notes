@@ -1,9 +1,9 @@
 
-## Basic shit
+# Basic shit
 -  a computer lang is a software, set of rules, set of programs to interact with device
 - a compiler is a pre defined program which converts your code into binary code
 - our written code is called **SOURCE CODE**.
-## Flow of C program
+# Flow of C program
 Source Code ---> Preprocessing ----> Compiler ----(Assembly code)--> Assembler --(Object code)----> Linker (addition of library files here) ----- (final machine code) ---> Loader ----> Primary Memory (RAM) (the final program is loaded here)
 
 
@@ -13,7 +13,7 @@ Source Code ---> Preprocessing ----> Compiler ----(Assembly code)--> Assembler -
 - **LINKER** combines multiple source code files and libraries to make a final executable `.exe` for windows and `.out` for unix based systems to run
 - when the execution is completed or an error is encountered, a status code is returned (0 for success).
 
-## Standalone applications v/s Web Apps
+# Standalone applications v/s Web Apps
 - Standalone need to be available locally installed. they are available for only single OS (windows wala linux pe nahi chalega)
 - Web apps are available online and are OS-independent
 - OS File extensions are responsible for these specific OS programmes. `.exe` for windows, `.dmg` for mac, `.tar, .rpm` for linux
@@ -21,7 +21,7 @@ Source Code ---> Preprocessing ----> Compiler ----(Assembly code)--> Assembler -
 - C & C++ are platform dependent languages(windows wala compiler windows pe chalega) and can only create STANDALONE APPLICATIONS
 - Rest of the langs are independent and can be used to make both web and standalone
 
-## HelloWorld
+# HelloWorld
 ```c
 #include <stdio.h>     // library
 int main()
@@ -31,7 +31,7 @@ int main()
 }
 ```
 
-## Variables (Named Memory Location)
+# Variables (Named Memory Location)
 - a computer has many memory locations and each location has an address ( a +ve integer) 
 - to store a value in memory we use a identifier (variable name to set a reference)
 - `datatype identifier = value;` for declaration or `datatype identifier;` for initialisation
@@ -40,7 +40,7 @@ int main()
 we need to specify the format specifier and then the name
 `printf("%d", variableName)`
 
-## Data Types
+# Data Types
 Primary data types in C are fundamental building blocks for representing basic values in a program. They are directly supported by the language and are used to define variables that store specific types of data. Here, I'll explain each primary data type in detail:
 
 1. **int (Integer):**
@@ -207,7 +207,7 @@ int main()
 ```
 hence proves that double is more precise than a float
 
-## Format Specifiers
+# Format Specifiers
 In C programming, format specifiers are used in functions like `printf` and `scanf` to define the expected type and format of the data being passed or received. Format specifiers begin with the percent sign (`%`) and are followed by a character or characters that specify the conversion type.
 
 Here is a list of common format specifiers used in the `printf` function:
@@ -247,7 +247,7 @@ Here is a list of common format specifiers used in the `printf` function:
 	- Left Align `printf("%-100d %d", num, num+1);` adds whitespaces to the right to align to the left
 	- Zero Padding `printf("%06d", num);` pads with zeroes instead of whitespaces
 
-## Arithmetic & Assignment Operators
+# Arithmetic & Assignment Operators
 `+` addition, `-` subtraction , `/` division, `*` multiply  , `--` decrement , `++` increment, `%` modulus
 
 `+=`, `*=`, `/=` and `-=` are also available for assignment
@@ -267,7 +267,7 @@ int main()
     return 0;
 }
 ```
-## Taking Input (scanf)
+# Taking Input (scanf)
 ```c
 #include <stdio.h>
 
@@ -296,7 +296,7 @@ int main()
 ```
 here, you will have to input `swayam dawg duhan` for it to read data correctly
 
-## Strings
+# Strings
 - array of characters, terminated by null character `\0`
 ```c 
 // initializing
@@ -366,7 +366,7 @@ so to fix it we can do :  (simple text formatting)
 
 - to convert to uppercase, you can use `toupper()` method
 
-## Useful MATH Functions
+# Useful MATH Functions
 to use, do `#include <math.h>`
 
 ```c
@@ -392,7 +392,7 @@ int main()
 
 similar to `M_PI`, we have `INFINITY` for infinity and `-INFINITY` for negative infinity
 
-## Other Operators
+# Other Operators
 **RELATIONAL OPERATORS**
 `==`, `!=`, `<`, `<=`, `>`, `>=`
 
@@ -408,11 +408,11 @@ they are used to perform operations at bit level, the bits of both numbers get l
 5. Left Shift (`<<`) - shifts bits of left operand to left by specified number `num << 2`, this means multiplication by 2^2.
 6. Right Shift(`>>`) - shifts to the right, division by 2 to the power specified num
 
-## Conditional Statements
+# Conditional Statements
 - if-else same as java, terniary operator `?` also available
 - **switch case** statements also same as java
 
-## Functions in C
+# Functions in C
 `int main()` itself is a function that the compiler finds to run the program
 to define a function, `returnType funcName(args){}`
 `void` for no return shit
@@ -435,7 +435,7 @@ when you call the function before defining it, you can run into some errors like
 - c doesnt care about if all the arguments have been given in the function or not, it will still compile and execute and give partial result. 
 - it will give random errors like implicit function declaration, type mismatch and undefined reference
 
-## Function Prototypes
+# Function Prototypes
 - it is a function declaration without a body before main
 - it ensures that call to the function is made with correct arguments
 - no issues of maintaining function order
@@ -458,7 +458,7 @@ double square(double x, double num){
 }
 ```
 
-## Some String Functions
+# Some String Functions
 
 ```c
 #include <stdio.h>
@@ -494,10 +494,10 @@ int main()
 
 - more string methods are available but before that we should understand pointers
 
-## Loops
+# Loops
 - for, while, do while, break, continue same as java
 
-## Arrays
+# Arrays
 - a structure to store many values of the same data type
 
 **TO DECLARE**
@@ -549,7 +549,7 @@ int main()
 }
 ```
 
-## Array Of Strings
+# Array Of Strings
 - it is a 2d array of char
 eg : 
 ```c
@@ -579,7 +579,7 @@ int main()
 ```
 
 
-## Swapping 2 Variables
+# Swapping 2 Variables
 ```c
 #include <stdio.h>
 #include <string.h>
@@ -597,7 +597,7 @@ int main()
 ```
 - here, if we dont mention the array size in brackets then we will run into an error when size of a is bigger than b.
 
-## Using BUBBLE SORT to sort an array
+# Using BUBBLE SORT to sort an array
 
 - the basic concept is to check the numbers at the current index and the next index, if aage wala chota hai to swap kardo
 - this will make the biggest number go to the end and smallest in beginning
@@ -640,7 +640,7 @@ logic : after first iteration, the last element will be 11
 in the second iteration, the last if statement will check if 10 > 11 which is completely unnecessary 
 so, after every n iterations, n large elements get placed at the end
 
-## Structs
+# Structs
 (similar to structs in solidity)
 - collection of related members (different variables) under one name
 - very similar to classes in other languages but doesnt have any methods
@@ -686,7 +686,7 @@ in this way, you need to specify which argument you are giving
 
 - we can also create an array of structs like other languages
 
-## Typedef 
+# Typedef 
 - used to give an existing data type a nickname
 - useful to reduce number of words typed (no special use case as such)
 - makes code more readable
@@ -743,3 +743,306 @@ int main()
 
 
 # enum
+- user defined data type that consists of a set of named integer constants
+- in real world, can be used to define ERROR_CODES or GAME_OPTIONS(NEW_GAME, LOAD_GAME, SAVE_GAME etc.)
+- they dont have strings attached to them, means you cant access the strings they are referenced to
+- by default the numbering starts from 0 but we can specify custom numbers like in the example below
+
+```c
+#include <stdio.h>
+
+enum Day{SUNDAY = 1, MONDAY = 2, TUESDAY = 3, WEDNESDAY = 4, THURSDAY = 5, FRIDAY = 6, SATURDAY = 7};
+
+int main()
+{
+    printf("%d", today);
+    return 0;
+}
+```
+
+you can do a switch case to check todays day in the above example : 
+```c
+#include <stdio.h>
+
+enum Day{SUNDAY = 1, MONDAY = 2, TUESDAY = 3, WEDNESDAY = 4, THURSDAY = 5, FRIDAY = 6, SATURDAY = 7};
+
+int main()
+{
+    enum Day today = TUESDAY;
+    switch(today){
+    case SUNDAY :   // you can either write SUNDAY or 1, both are same
+        printf("Today is Sunday");
+        break;
+    case MONDAY :
+        printf("Today is Monday");
+        break;
+    case 3 :
+        printf("Today is Tuesday");
+        break;
+    case 4 :
+        printf("Today is Wednesday");
+        break;
+    case THURSDAY :
+        printf("Today is Thursday");
+        break;
+    case 6 :
+        printf("Today is Friday");
+        break;
+    case SATURDAY :
+        printf("Today is Saturday");
+        break;
+    default :
+        printf("Aaj kuch bhi nahi hai T-T");
+        break;
+    }
+    return 0;
+}
+```
+
+# Generating a Random Number
+- they are statistically random so dont use for cryptography
+- In C, you can generate random numbers using the `rand()` function from the `stdlib.h` library. However, it's important to note that the `rand()` function generates pseudorandom numbers, meaning the sequence of numbers it produces is determined by an initial seed value. To get different sequences of random numbers, you can set a different seed using the `srand()` function.
+- the `rand()` function gives a random number between 0 and 32767
+Here's a simple example of generating random numbers in C:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int main()
+{
+    srand(time(0));
+    int random = (rand() % 100) + 1;
+    printf("%d", random);
+    return 0
+```
+rand() % 100 will give a random number between 0 and 99 and then +1 will make it between 1 and 100.
+
+# Memory Addresses
+- memory is an array of bytes within RAM(street)
+- memory block is a single unit (byte) within memory used to hold some value 
+- memory address is the address of where that memory block is located
+
+**TO GET THE ADDRESS OF A VARIABLE**
+```c
+#include <stdio.h>
+int main()
+{
+    char a = 'X';
+    char b = 'Y';
+    char c = 'Z';
+    printf("%p\n", &a);  // 000000000061FE1F is returned
+    printf("%p\n", &b);  // 000000000061FE1E is returned
+    printf("%p\n", &c);  // 000000000061FE1D is returned
+    return 0;
+}
+
+```
+
+- `%p` is the format specifier here and `&` is the operator for getting the address of a variable
+- notice how there is only a difference of 1 in the memory addresses, this is because char uses up only 1 memory block (1 byte), however if we use int then there would be a difference of 4 because it takes up 4 bytes
+
+# Pointers
+- Pointers in C are variables that store memory addresses. They are a powerful feature that enables direct manipulation of memory, dynamic memory allocation, and efficient data access. Understanding pointers is fundamental for programming in C.
+- In a 32-bit system, where memory addresses are typically represented using 32 bits, pointers are usually 4 bytes in size. This is because 2^32 memory addresses are possible, and each address corresponds to a byte in memory. In a 64-bit system, where memory addresses are represented using 64 bits, pointers are typically 8 bytes in size. This allows for a much larger address space (2^64 possible addresses).
+
+- the asterisk `*` means the ***in-direction operator***.
+```c
+int num = 42;
+int *pNum = &num; // Pointer initialized with the address of 'num'
+```
+here's a pointer pointed to an int memory address
+
+**ADVANTAGES -**
+1. Less time in program execution
+2. we can create data structures like LinkedList, Stack, Queue using pointers
+3. dynamically memory allocation
+4. returning more than one value from function
+5. searching and sorting large data very easily
+
+*Naming Convention :*  small p in front of variable name then basic camel case
+
+**DEFERENCING A POINTER (ADDRESS USE KARKE VALUE NIKAALNA)**
+use a `*` asterisk again 
+```c
+#include <stdio.h>
+int main()
+{
+    int num = 69;
+    int *pNum = &num;
+    int deferencedNum = *pNum;
+    printf("%d", deferencedNum);
+    return 0;
+}
+```
+or simply do `printf("%d", *pNum)`
+
+**GOOD PRACTICE TO DECLARE POINTERS (INITIALIZING AND THEN DECLARING**
+```c
+#include <stdio.h>
+
+int main()
+{
+    int age = 18;
+    int *pAge = NULL;
+    pAge = &age;
+    printf("%p", pAge);
+    return 0;
+}
+```
+
+# File Handling
+1. **OPENING AND CLOSING A FILE**
+```c
+FILE *filePointer = fopen("example.txt", "r"); // opening
+fclose(filePointer)   // closing
+```
+
+- while opening, the second argument takes either `r` for reading, `w` for writing(overwrites existing data in file), `a` for appending
+- appending uses the same methods as writing, it just doesn't overwrite
+- writing will remove all the existing data and write new data
+- `FILE` is the data type here to begin file handling
+- when file doesnt open (basically koi opening error ya galat path diya ho), then `NULL` is returned so you can handle errors accordingly
+
+2. **WRITING**
+	1. fputs() - to write a single character to the file
+	2. fputs() - to write a string to the file
+	3. fprintf() - to write formatted data to the file
+```c
+#include <stdio.h>
+
+int main()
+{
+    FILE *f = fopen("swayam.txt", "w");
+    int value = 55;
+    fputc('C', f);
+    fputs("\nHello Bro", f);
+    fputs("\nThis string got appended", f);
+    fprintf(f, "\nThe Value is : %d", value);
+    fclose(f);
+    return 0;
+}
+```
+the above code returns -
+```txt
+C
+Hello Bro
+This string got appended
+The Value is : 55
+```
+
+**why didn't it overwrite??**
+because in this code, file open kari aur jab fputc kara to sab overwrite hokar C aagaya aur uske baad sab append hota gaya 
+ek baar open krne pe sab append hota jayega jab tak close ni karoge
+overwrite krne ke liye re-open krna padega
+
+3. **READING**
+- fgetc() - to get character
+```c
+#include <stdio.h>
+
+int main()
+{
+    FILE *f = fopen("swayam.txt", "r");
+    char letter = fgetc(f);  // returns 1st letter
+    char letter2 = fgetc(f); // returns 2nd letter
+    printf("%c %c", letter, letter2);
+    fclose(f);
+    return 0;
+}
+// fgetc will return the next character every time we call it and return NULL when the file finishes, similar for fgets
+```
+so the below example will print the whole txt letter by letter
+how? - fgetc() returns EOF when there is nothing else to get anymore which means END OF FILE
+```c
+#include <stdio.h>
+
+int main()
+{
+    FILE *f = fopen("swayam.txt", "r");
+    char letter;
+    while((letter = fgetc(f)) != EOF){
+        printf("%c", letter);
+    }
+    fclose(f);
+    return 0;
+}
+```
+why did we do `letter = fgetc(f)` inside the while loop condition.. this is because if we called the fgetc 2 times in the printf and condition then it would get called 2 times, basically we would skip 1 letter in each iteration this way
+
+- fgets() - to read a line string from file
+```c
+#include <stdio.h>
+
+int main()
+{
+    FILE *f = fopen("swayam.txt", "r");
+    char buffer[100];
+    fgets(buffer, 100, f);
+    printf("%s", buffer);
+    return 0;
+}
+```
+this above program will read the first line from the file
+syntax - `fgets(buffer string jismein data daalna, integer value of jitne characters chaiye, file pointer)`
+
+another example - 
+```c
+#include <stdio.h>
+
+int main()
+{
+    FILE *f = fopen("swayam.txt", "r");
+    char buffer[100];
+    fgets(buffer, 10, f);
+    printf("%s", buffer);
+    fgets(buffer, 10, f);
+    printf("%s", buffer);
+    return 0;
+}
+```
+in this code, maanlo first line mein 15 chars hain then pehle fgets se 10 char read kiye then second fgets se agle 5 char read kiye aur next line pe nahi gaya jabki integer value abhi bhi 5 ki bach rahi thi, this is because fgets() only reads a line
+agar dobara se fgets() use krenge tab jaake next line read hogi
+
+**TO READ WHOLE DOCUMENT**
+- fgets returns NULL when file ends
+```c
+#include <stdio.h>
+int main()
+{
+    FILE *f = fopen("swayam.txt", "r");
+    char buffer[255];
+    while(fgets(buffer, 255, f) != NULL){
+        printf("%s", buffer);
+    }
+    return 0;
+}
+```
+
+- fscanf() - to read formatted data
+
+4. **ERROR HANDLING**
+- errors can be handled using `feof()` and `ferror()` - read about them online
+
+5. **DELETING A FILE**
+- for this we can use the `remove()` method
+- it returns 0 for success
+```c
+#include <stdio.h>
+int main()
+{
+    if (remove("swayam.txt") == 0){    // dont use pointer in place of file address
+        printf("Successfully Deleted!");
+    } else {
+        printf("Error in deletion!");
+    }
+    return 0;
+}
+```
+
+
+
+
+
+
