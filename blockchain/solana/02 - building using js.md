@@ -216,3 +216,14 @@ transferSol();
 ```
 
 
+## Node Provider?
+**NODE** - 
+- a node is a program running on a physical computer system 
+- connects with the blockchain network, sends and receives transactions and validates TXs
+- the blockchain is made up of nodes and hence decentralized
+- only way to access blockchain information
+- nodes are hard to manage and setup
+
+- so **NODE PROVIDERS** offer a way to access blockchain information without running a node
+- in our case, Phantom Wallet provides us with the connection to Solana network
+
