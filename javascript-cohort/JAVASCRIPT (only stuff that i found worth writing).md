@@ -162,10 +162,10 @@ async function main(){
 
 ## The Fetch API
 
-- we can use the ***AXIOS*** library to do all this in an easier way
+- we can use the ***AXIOS*** library to do all this in an easier way. read docs for the same
 - by default, all requests are GET
 syntax : 
-```
+```js
 fetch(url, options)
   .then(response => {
     // Handle the response
@@ -226,5 +226,221 @@ fetch(`https://api.example.com/data?${params}`)
   .then(response => response.json())
   .then(data => console.log(data))
   .catch(error => console.error('Fetch error:', error));
+```
+
+
+## try catch
+
+```js
+try{
+    let a;
+    const len = a.length
+    console.log("hi after error")
+} catch (e) {
+    console.log("hi, inside catch")
+}
+  
+console.log("hi, outside")
+```
+- to catch potential errors
+- when err in try then execution of try stops and control reaches catch then moves on outside
+
+## DOM Manipulation
+various methods to manipulate html elements and show stuff on the page
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form-1">
+        First Name : <input type = "text" value="swayam"><br>
+        Last Name  : <input type="text" value="duhan"><br>
+    </form>
+    <p>Click the "TRY IT" button to do sum' shit</p><br>
+    <button onclick="sayName()">TRY IT</button>
+    <p id="test"></p>
+  
+    <script>
+        function sayName(){
+            let x = document.getElementById("form-1").elements.length
+            let y = document.getElementById("form-1").elements[0].value
+            document.getElementById("test").innerHTML = "Found " + x + " elements in the form. The value of 1st element is " + y + "."    
+            let para = document.createElement("p")
+            para.innerText = "This paragraph was created using DOM"
+            document.body.appendChild(para)
+        }
+        </script>
+</body>
+</html>
+```
+
+
+- To get elements
+	- `getElementById, getElementsByTagname, getElementByClassName, querySelectorAll, querySelector`
+	- for query selector - [click here](https://www.w3schools.com/cssref/css_selectors.php)
+	- you can further use `.style.property` to change css of selected elements
+- `document.forms` to get all form elements. this is called a object collection. more examples include `document.anchors, document.body, document.embeds, document.images, document.links, document.scripts` etc.
+
+Difference b/w HTML Collection and Node List
+**HTML** - live list (getElementById, getElementsByClassName), collection of document elements, items can be accessed using name id or index number, live means koi dom ke through change kroge to dikh jayega page pe
+**NODE LIST** - not live (querySelectorAll), collection of nodes (element nodes, text nodes, attribute nodes), access only via index number, are static
+
+- Changing HTML Elements
+	- `.innerHTML
+	- `.style.property`
+	- `.setAttribute(attribute, value)`
+	- `document.write` - never use this after document is loaded, it will overwrite everything
+- `replaceChild`, `appendChild`, `removeChild`, `createElement`, `createTextNode`
+- `.childNodes[index]` to access children
+- whole document is document node, each element is element node, each text in element is text node
+- a text node is the child element of element node
+
+```js
+// accessing text inside elements
+let text = document.getElementById("demo").firstChild.nodeValue
+text = document.getElementById("demo").childNodes[0].nodeValue
+text = document.getElementById("demo").innerHTML
+```
+
+- siblings are elements with same heirarchy
+
+### DOM EVENTS
+```html
+<p onclick="this.innerHTML='Oil Up'">Hello Lil Bro</p>
+```
+
+eg : code to capitalise all input
+```html
+Enter Text  : <input type="text" id="demo" oninput="upperCase()">
+    <script>
+        function upperCase(){
+            const elem = document.getElementById("demo")
+            elem.value = elem.value.toUpperCase()
+        }
+    </script>
+```
+
+- more events include `ondoubleclick, onmouseover, onmouseout, onmousedown, onmouseup`
+
+**ONLOAD and ONUNLOAD FUNCTIONS**
+can be used to check browser version and info when page loading and display correct webpage version based on it
+
+#### DOM Event Listeners
+addEventListener and removeEventListener
+```js
+document.getElementById("demo").addEventListener("input", upperCase)
+        function upperCase(){
+            const elem = document.getElementById("demo")
+            elem.value = elem.value.toUpperCase()
+        }
+```
+
+```html
+<p>Resize your window to change the number below :)</p>
+    <p id="demo"></p>
+    <script>
+        let x = document.getElementById("demo")
+        x.innerHTML = Math.floor(Math.random() * 10000)
+        window.addEventListener("resize", resize)
+        function resize(){
+            x.innerHTML = Math.floor(Math.random() * 10000)
+        }
+    </script>
+```
+
+to remove listener
+```js
+elemReference.removeEventListener("listenerName", functionName)
+```
+#### Event Bubbling or Event Capturing
+`useCapture?` is the third argument of `addEventListener`
+in capturing outermost event is handled first then the inner one
+bubbling is opposite
+`true` for capturing and `false` for bubbling
+- default is bubbling
+
+## Hitting backend request using frontend
+
+we use `fetch()` to do this
+here's an example
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function sum(){
+        const a =  document.getElementById("num1").value;
+        const b = document.getElementById("num2").value;
+        fetch(`https://sum-server.100xdevs.com/sum?a=${a}&b=${b}`)
+        .then((res)=>{
+            console.log(res)
+            res.text()
+            .then((ans)=>{
+                document.getElementById("ans").innerHTML = "The answer is " + ans
+            })
+        })
+    }
+</script>
+<body>
+    <input id="num1" type = "text" placeholder="first number"><br><br>
+    <input id="num2" type="text" placeholder="second number"><br><br>
+    <button onclick="sum()">calculate sum</button>
+    <p id="ans"></p>
+</body>
+</html>
+```
+
+this can be done easily using `axios` done later
+- we can use async/await for easier code lmao, forgive me for using promises
+
+### Debouncing
+example : on amazon webpage, as you are typing in the bar you keep getting new suggestions (the backend is getting hit with every keystroke)
+now if you are typing something very fast then there are no such suggestions and we get suggestions only after we typed
+this is called DEBOUNCING and is used to reduce backend calls
+
+example : you create a frontend to get sum of number on every keystroke it will call backend on every keystroke, now if the number you want to enter is known to you then it is simply sending bematlab ki backend calls on each stroke so we need debouncing
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let clock;
+    function debouncedSum(){
+        clearTimeout(clock)
+        clock = setTimeout(()=>{
+            sum()
+        }, 100)
+    }
+    async function sum(){
+        const amount =  document.getElementById("principal").value;
+        const rate = document.getElementById("rate").value;
+        const time = document.getElementById("time").value;
+        const response = await fetch(`https://sum-server.100xdevs.com/interest?principal=${amount}&rate=${rate}&time=${time}`)
+        const json = await response.json()
+        document.getElementById("ans").innerHTML = `The amount after ${time} years is ${json.total} and interest applied is ${json.interest}`
+    }
+</script>
+<body>
+    <input id="principal" oninput="debouncedSum()" type = "text" placeholder="principal amount"><br><br>
+    <input id="rate" oninput="debouncedSum()" type="text" placeholder="rate"><br><br>
+    <input id="time" oninput="debouncedSum()" type="text" placeholder="time in years"><br><br>
+    <p id="ans"></p>
+</body>
+</html>
 ```
 

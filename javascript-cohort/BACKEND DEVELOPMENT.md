@@ -76,7 +76,7 @@ express makes it easier.
 
 `npm install express` to install 
 
-```
+```js
 const express = require("express")
 const app = express()
 const port = 3000
@@ -151,7 +151,7 @@ This is used when you need a get to handle multiple requests about something sim
 
 so for that we use a wildcard shit.
 eg : 
-```
+```js
 app.get('/file/:filename', (req,res)=>{
 
   const file = req.params.filename
@@ -176,7 +176,7 @@ anything present after : in this /file/ route will get handled by this
 the filename is accessed using params
 
 #### How to handle all invalid routes
-```
+```js
 app.all('*', (req, res) => {
   res.status(404).send('Route not found');
 })
@@ -204,7 +204,7 @@ we define middlewares at the top and simply use them in our app.method function 
 
 we do this by putting multiple callback functions in our app function.
 eg : 
-```
+```js
 const express = require("express");
 const app = express();
 
@@ -241,7 +241,7 @@ also, you only need to write the function name, not call the function, the shit 
 
 ### Global Catches
 if the user sends anything weird in the post request body or gives the wrong inputs or hits some wrong route then we use this.
-```
+```js
 app.use((err, req, res, next) => {
   res.json({
   msg : "sorry, something is up with the server"
@@ -263,7 +263,7 @@ very easy way to check for inputs. `npm install zod`
 ask ChatGPT for help with implementing zod or docs
 
 eg : 
-```
+```js
 const zod = require("zod")
   
 // eg : write a schema for a object that takes an email, a pass of 8 letters and a country that is either IN or US
@@ -287,7 +287,7 @@ validate({
 ```
 
 eg : 
-```
+```js
 const express = require("express")
 const zod = require("zod")
 
@@ -336,11 +336,11 @@ There is another method for authentication using Cookies, it will be discussed l
 
 #### Using JWT Tokens
 we use the jsonwebtoken library
-for example, when signing in (post request), check if the username and password match in the database, if yes then do `jwt.sign(<json_value_to_encode>, <jwt_password>)` this will return a token that can be decoded by anyone [here](jwt.io) (so should not contain password). 
+for example, when signing in (post request), check if the username and password match in the database, if yes then do `jwt.sign(<json_value_to_encode>, <jwt_password>)` this will return a token that can be decoded by anyone [here](https://jwt.io) (so should not contain password). 
 later when any request is sent, this token is sent in the headers in authorization, then we do 
 `jwt.verify(<token>, <password>)` this will return the decoded json. this can be used to verify the user.
 eg : 
-```
+```js
 const jwt = require("jsonwebtoken");
 const express = require("express");
 const jwtPass = "Sw@y4m";

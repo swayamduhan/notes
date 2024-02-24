@@ -21,7 +21,7 @@ User hits backend then backend hits database
 ## MongoDB
 lets you create multiple databases
 each database has tables (collections)
-we can dumb json data in these tables
+we can dump json data in these tables
 it is schemaless (json data doesnt have any structure) and it scales well (good choice for decent applications but most of the open source real world full stack applications use SQL DBs)
 
 
@@ -30,7 +30,7 @@ this lib is used to store data in database
 we can do CRUD => create, read, update, delete
 
 eg : 
-```
+```js
 const mongoose = require('mongoose');
 mongoose.connect(`mongodb+srv://admin:<pass>@cluster0.aioqxmc.mongodb.net/${database-name}`)
 
@@ -45,10 +45,39 @@ const user = new User({name : "swayam", age : 18, email : "oqibz@example.com"})
 user.save()
 .then(()=>console.log("done"))
 ```
+
+or 
+
+```js
+const mongoose = require("mongoose")
+mongoose.connect("mongodb+srv://admin:Jc6sD0hiR6morjrU@cluster0.aioqxmc.mongodb.net/user-data")
+  
+const schema = new mongoose.Schema({
+    name : String,
+    password : String
+})
+  
+const User = mongoose.model("user data", schema)
+  
+const user1 = new User({name : "swayamdawn", password : "hell0x123"})
+user1.save().then(() => console.log("User Saved"))
+     .catch(err => console.log(err))
+  
+// find a user by its name
+User.findOne({name : "swayamdawn"}).then((user)=>{
+    if(!user){
+        return console.log("No user found")
+    }
+    // show the user info
+    console.log(`User Name : ${user.name}`)
+    console.log(`Password : ${user.password}`)
+})
+```
 we can also do `await User.create({json})` instead of new User and then saving
 
 there are various methods present in docs to simply search for a certain object instance in database
 we usually use this to see if the user already exists in the db
-```
+```js
 const userExists = await User.findOne({email : "adjada@gmail.com"}) 
 ```
+

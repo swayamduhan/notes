@@ -64,3 +64,117 @@ function consoleError(errmsg: string): never{
 }
 ```
 - void is used when there is nothing to return, void can also be used in place of never here but according to TS documentation we should stick to using `never` when the function is used in throwing errors or terminating execution
+
+## Using functions to pass objects
+- object declarations are same as js
+```ts
+function createCourse(name : string, price : number):{name : string, cost: number}{
+    return {name : name, cost : price}
+}
+```
+- this is a function that takes in a name and price then returns an object with a name string and cost number
+
+
+## Weird behavior of TS objects
+```ts
+function createUser({name , isPaid} : {name : string, isPaid : boolean}){}
+  
+createUser({name : "Swayam", isPaid : true, email : "swayam@gmail.com"})
+```
+
+in the above code, the method for destructuring objects and defining their types is shown.
+however, if we try to pass an additional parameter like email it fails 
+to bypass, use the below code
+```ts
+function createUser({name , isPaid} : {name : string, isPaid : boolean}){}
+
+let User = {name : "swayam", isPaid : true, email : "swayam@gmail.com"}
+createUser(User)
+
+export {}
+```
+- there are better ways of handling this which will be shown later
+
+
+## Type Alias
+- used to create a new datatype like string number etc.
+```ts
+type User = {
+    name : string;
+    email : string;
+    contact : number
+}
+
+function createUser(user : User) {}  // input user of type User
+export {}
+```
+
+## READONLY, OPTIONAL, TYPE MIXMATCHING
+
+- example : you are saving data in your mongo db, it puts an `_id` in the object so you want it to not be changed by anyone then you can put a `readonly` tag infront of it
+- if you want a field in object to be optional, you can use `?`
+```ts
+type User = {
+    readonly _id : string
+    name : string
+    contact : number
+    creditCardNumber? : number
+}
+ 
+const user1 : User = {
+    _id : "12234",
+    name : "Swayam",
+    contact : 99235234
+}
+```
+- here creditcardnumber was optional to give and id cannot be changed now
+
+- now talking about type mixing, we can extend another type using `&`
+```ts
+type cardNumber = {
+    cardNumber : number
+}
+  
+type cardName = {
+    cardName : string
+}
+  
+type cardDetails = cardName & cardNumber & {
+    cvv : number
+}
+  
+const card : cardDetails = {
+    cardNumber: 1234567890,
+    cardName : "",
+    cvv : 343
+}
+```
+
+## Arrays in TS
+```ts
+let newArrayOne : number[] = []
+newArrayOne.push(1)
+  
+let newArrayTwo : Array<number> = []
+newArrayTwo.push(1)
+  
+let newArrayThree : ReadonlyArray<number> = [5,6,2,8];
+// push property doesn't exist in a readonly array
+  
+let newArrayFour = [];
+// this is an array of type never and can't store shit
+  
+type User = {
+    name : string
+    age : number
+}
+  
+let userArray : User[] = []; // array of type User
+userArray.push({name:"John",age:30});
+  
+let twoDimensionalArray : number[][] = [[255,15,15], []]
+twoDimensionalArray.push([5,3,7]);
+```
+
+------------------------------------------ continued later -------------------------------------------------
+

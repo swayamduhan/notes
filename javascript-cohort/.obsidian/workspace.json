@@ -4,47 +4,47 @@
     "type": "split",
     "children": [
       {
-        "id": "1ef08417a82a2814",
+        "id": "ce0e6c06cccbdbd5",
         "type": "tabs",
         "children": [
           {
-            "id": "c114f23fbb49d9cd",
+            "id": "526c45fe022a9f14",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Git and GitHub.md",
+                "file": "JAVASCRIPT (only stuff that i found worth writing).md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "2648eaa989deb103",
+            "id": "65cac5945719294e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Git and GitHub.md",
+                "file": "JAVASCRIPT (only stuff that i found worth writing).md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "c2d42e319c0f8d51",
+            "id": "4e4a545a1d30fef6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Databases.md",
+                "file": "React.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Git and GitHub.md",
+                "file": "React.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Git and GitHub.md",
+                "file": "React.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Git and GitHub.md"
+                "file": "React.md"
               }
             }
           }
@@ -171,14 +171,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "2648eaa989deb103",
+  "active": "4e4a545a1d30fef6",
   "lastOpenFiles": [
-    "Databases.md",
-    "BACKEND DEVELOPMENT.md",
-    "Git and GitHub.md",
-    "ALL INSTALLATIONS.md",
-    "BASH and Commands.md",
     "JAVASCRIPT (only stuff that i found worth writing).md",
+    "React.md",
+    "Git and GitHub.md",
+    "Databases.md",
+    "BASH and Commands.md",
+    "BACKEND DEVELOPMENT.md",
+    "jwt.io.md",
+    "ALL INSTALLATIONS.md",
     "SOME BASIC METHODS.md",
     "Untitled.canvas",
     "2023-12-20.md",
