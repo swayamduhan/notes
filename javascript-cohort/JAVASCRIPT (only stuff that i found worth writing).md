@@ -26,6 +26,7 @@ Java, Cpp, GoLang are multithreaded
 	 let(changeable, can be initialised without value), const(not changeable later on), var(outdated)
 - ##### String, Integer, Boolean
 - ##### Array, Object
+	- if you have a `const` array then you can still change the elements inside the array but you cant change it to a new array
 - ##### Functions, Arrow Functions
 
 
@@ -444,3 +445,7 @@ example : you create a frontend to get sum of number on every keystroke it will 
 </html>
 ```
 
+**DOM MANIPULATION OF PRE REACT DAYS**
+- the backend will return a state of the data when fetched after every interval using `setInterval`
+- according to the json data, display items on the screen
+- better solution - instead of clearing whole data and putting the updated data back on the screen, we should calculate the difference between new and old data and only update what needs to be updated (VIRTUAL DOM - where we have the blueprint of the DOM). this is how react works

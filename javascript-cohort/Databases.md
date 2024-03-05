@@ -81,3 +81,73 @@ we usually use this to see if the user already exists in the db
 const userExists = await User.findOne({email : "adjada@gmail.com"}) 
 ```
 
+## Creating References
+- a user purchases courses and these courses are available in another table
+- how can you create a relationship between this purchasedCourses field and the table
+- we can use the `ref` property to do this
+
+example : 
+```js
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+// Define Author schema
+const authorSchema = new Schema({
+    name: String,
+    age: Number
+});
+
+// Define Book schema
+const bookSchema = new Schema({
+    title: String,
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'Author'  // This refers to the 'Author' model
+    },
+    pages: Number
+});
+
+// Create models from the schemas
+const Author = mongoose.model('Author', authorSchema);
+const Book = mongoose.model('Book', bookSchema);
+
+// Example usage
+(async () => {
+    await mongoose.connect('mongodb://localhost:27017/mydb', { useNewUrlParser: true, useUnifiedTopology: true });
+
+    // Create a new author
+    const author = await Author.create({ name: 'John Doe', age: 40 });
+
+    // Create a new book referencing the author
+    const book = await Book.create({ title: 'Sample Book', author: author._id, pages: 200 });
+
+    // Now you can populate the author field of the book
+    const populatedBook = await Book.findById(book._id).populate('author');
+    console.log(populatedBook);
+
+    // Close connection
+    await mongoose.connection.close();
+})();
+
+```
+
+## CRUD 
+1. Create
+	`.create` to create new entry in table
+2. Read
+	`.findById`, `.findOne` to find one entry with the specified data
+	`find` to multiple entries, `.find({})` to get all entries (similar for update)
+3. Update
+	`updateOne`, `updateMany`, `update`
+```js
+await Author.updateOne({name : "John Doe"}, {$push : {bookIds : 800}})
+```
+this will push a new book id to the bookIds array in the entry of author with name John Doe
+
+4. Delete
+	`.deleteOne` and `deleteMany`
+
+## NOTE
+CLUSTER? - eg an AWS machine to store all databases
+DATABASES? - every application has its own database and it contains further tables
+TABLES? - they contain the data for sum' specific shit

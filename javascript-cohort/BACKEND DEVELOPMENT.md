@@ -393,3 +393,21 @@ app.get('/users', (req,res)=>{
 app.listen(3000);
 
 ```
+
+## Router in Express.js?
+`const router = Router()`
+- instead of creating whole server inside 1 express file, we split it into multiple files, some files contain middlewares some contain database schemas some contain routers and 1 combines it all and hosts the server
+- to create routes and export them we use this router
+TO USE, 
+in the file use `router.get()` etc. instead of `app.get()`
+
+and in the main file, do `app.use("/route", importedRouter)`
+
+
+## CORS Error
+- when you are running your frontend and backend on your machine, you'll often get a CORS (Cross Origin) Error.
+- your backend must allow the frontend to use its facility
+- HOW TO FIX?
+`npm install cors`
+`app.use(cors())`
+this will make your backend slightly insecure and now any frontend can hit this backend
