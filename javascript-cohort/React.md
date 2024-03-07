@@ -198,6 +198,24 @@ it also **helps in easier reconciliation**
 
 to bypass an extra div in html code we can use `<> </>` or `<React.Fragment> </React.Fragment>` (both are same) to not put extra div in code
 
+## conditional rendering
+you can render elements based on a condition
+```jsx
+<div>
+	{count % 2 == 0 ? "even" : "odd"}
+</div>
+
+// or 
+
+if(count % 2 == 0){
+	return <div>Even</div>
+}
+
+// or
+
+{condition && component}
+```
+
 ## re-renders
 a re-render is when a component gets loaded again and react did some work to update this  
 in real life and bigger applications, we should minimize re-renders in the app/website
@@ -576,3 +594,308 @@ return (
     </>
   )
 ```
+
+ - how to route from one page to another???
+ one way of doing this is ->
+ ```jsx
+ <button onClick={function(){
+        window.location.href = "/dashboard"
+      }}>Dashboard</button>
+```
+
+**but there is a bug doing it this way**
+it still sends out network requests and reloads the complete page which is not the solution. this is not really client side routing
+
+so, we will do **useNavigate** to get around this
+
+CORRECT SOLUTION : 
+```jsx
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
+import { Landing } from './components/Landing'
+import { Dashboard } from './components/Dashboard'
+  
+function App() {
+  return (
+    <>
+      <BrowserRouter>
+      <TopBar />
+        <Routes
+          <Route path='/' element={<Landing />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  )
+}
+  
+function TopBar(){
+  const navigate = useNavigate()
+  
+  return (
+    <div>
+      <button onClick={function(){
+        navigate("/dashboard")
+      }}>Dashboard</button>
+      <button onClick={function(){
+        navigate('/')
+      }}>Landing</button>
+    </div>
+  )
+  
+}
+```
+- you can only use navigate inside a component that is inside BrowserRoutes, bahar nahi chalega 
+
+## lazy loading
+it means slowly giving the client the code for the page they are visiting instead of poora code bundle ek sath pakda dena
+change in way of importing
+```jsx
+const Dashboard = React.lazy(()=> import("./components/Dashboard"))
+```
+
+- and while exporting write `export default function Dashboard ... ` instead of `export function Dashboard ...`
+- export default is used when you are exporting only one single thing from the whole module bundle, to import it you do `import anyName from "./file.jsx"`
+
+**this code still has an error**
+we have to introduce Suspense API to handle the loading of component which is asynchronous
+it wraps the component and takes in a fallback of what to display while react is loading 
+code : 
+```jsx
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
+import React, { Suspense } from 'react'
+const Dashboard = React.lazy(()=> import("./components/Dashboard"))
+const Landing = React.lazy(()=> import("./components/Landing"))
+
+function App() {
+  return (
+    <>
+      <BrowserRouter>
+      <TopBar />
+        <Routes>
+          <Route path='/' element={<Suspense fallback={"loading landing page, please wait ..."}><Landing /></Suspense>} />
+          <Route path='/dashboard' element={<Suspense fallback={"loading dashboard, please wait ..."}><Dashboard /></Suspense>} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  )
+}
+
+function TopBar(){
+  const navigate = useNavigate()
+  return (
+    <div>
+      <button onClick={function(){
+        navigate("/dashboard")
+      }}>Dashboard</button>
+      <button onClick={function(){
+        navigate('/')
+      }}>Landing</button>
+    </div>
+  )
+}
+
+export default App
+```
+
+## prop drilling and fix using Context API
+if a state is stored in a higher ancestor and needs to be passed to the lowest child aur jo beech mein components aa rahe hain unko zarurat nahi hai un props ki bas neeche bhej rahe hain,
+then it is called prop drilling
+makes code not visually appealing
+
+- context api helps in teleporting your state down without drilling
+- it keeps the context state out of the 
+
+**STEPS FOR USING CONTEXT API :**
+
+1. create new context either in new file or same
+```jsx
+import { createContext } from "react";
+
+export const CountContext = createContext(0)
+```
+
+2. wrap the context around the top component from where you need to teleport state and then useContext
+```jsx
+import React, {useState, useContext } from 'react'
+import { CountContext } from './Context'
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  
+  return (
+    <>
+      <CountContext.Provider value={count}>
+        <CountRenderer setCount={setCount}/>
+      </CountContext.Provider>
+    </>
+  )
+}
+  
+function CountRenderer({ setCount }){
+  return (
+    <div>
+      <Count setCount={setCount}/>
+    </div>
+  )
+}
+  
+function Count({ setCount }) {
+  const count = useContext(CountContext)
+ return(
+  <>
+    <div>
+      Count is {count}
+    </div>
+    <Buttons setCount={setCount}/>
+  </>
+  )
+}
+  
+function Buttons({ setCount }){
+  const count = useContext(CountContext)
+  return (
+    <>
+      <button onClick={()=>setCount(count + 1)}>Increment</button>
+      <button onClick={()=>setCount(count - 1)}>Decrement</button>
+    </>
+  )
+}
+export default App
+```
+
+3. to put setCount also in context, you can either create another context or objectify the existing context to hold more than 1 value
+```jsx
+// context 
+import { createContext } from "react";
+export const CountContext = createContext()
+
+// file
+import React, {useState, useContext } from 'react'
+import { CountContext } from './Context'
+  
+function App() {
+  const [count, setCount] = useState(0)
+
+  
+  return (
+    <>
+      <CountContext.Provider value={{count, setCount}}>
+        <CountRenderer />
+      </CountContext.Provider>
+    </>
+  )
+}
+  
+function CountRenderer(){
+  return (
+    <div>
+      <Count/>
+    </div>
+  )
+}
+  
+function Count() {
+  const {count} = useContext(CountContext)
+ return(
+  <>
+    <div>
+      Count is {count}
+    </div>
+    <Buttons/>
+  </>
+  )
+}
+  
+function Buttons(){
+  const { count, setCount } = useContext(CountContext)
+  return (
+    <>
+      <button onClick={()=>setCount(count + 1)}>Increment</button>
+      <button onClick={()=>setCount(count - 1)}>Decrement</button>
+    </>
+  )
+}
+export default App
+```
+
+
+**PROBLEM WITH CONTEXT API**
+you would assume that when you have teleported the props down then only the components that are using the context should re-render but that doesnt happen. the app doesnt get more optimal using context, it is just for cleaner code. jab parent re-render hoga to saare children honge as usual
+so to tackle this, we use Recoil for State Management
+
+## recoil for state management
+- it is better than context and gets rid of unnecessary re-renders
+- we will define our state and components in different folders
+- Recoil is a state management library
+- more popular libraries are Redux, Zustand
+
+has a concept of atom to store state which can be used to teleport state to comps
+
+`npm install recoil`
+conventional directory : src > store > atoms > your files here
+```jsx
+import { atom } from "recoil";
+  
+export const countAtom = atom({
+    key: "countAtom",
+    default: 0
+});
+```
+the key is used for unique identification of atom
+
+comparing raw react with recoil
+`const [count, setCount] = useState(0)`
+in recoil, `useRecoilState` is same as `useState`, `useRecoilValue` is same as `count` and `useSetRecoilState` is `setCount`
+
+also, anything that uses recoil logic needs to be wrapped around `<RecoilRoot></RecoilRoot>`
+- agar tumhein ek particular comp ke andar hi andar state use krni hai to basically use useState instead of recoil
+
+**SELECTORS IN RECOIL FOR CONDITIONAL RENDERING**
+A **selector** represents a piece of **derived state**. You can think of derived state as the output of passing state to a pure function that derives a new value from the said state.
+
+Derived state is a powerful concept because it lets us build dynamic data that depends on other data. In the context of our todo list application, the following are considered derived state:
+
+- **Filtered todo list**: derived from the complete todo list by creating a new list that has certain items filtered out based on some criteria (such as filtering out items that are already completed).
+- **Todo list statistics**: derived from the complete todo list by calculating useful attributes of the list, such as the total number of items in the list, the number of completed items, and the percentage of items that are completed.
+
+example : 
+task - show "even" when count is even
+
+usual way - 
+```jsx
+function EvenCountRenderer() {
+  // const isEven = useRecoilValue(evenSelector);
+  const count = useRecoilValue(countAtom)
+  const isEven =  useMemo(()=>{
+    return (count % 2 == 0)
+  }, [count])
+  
+  return <div>
+    {isEven ? "It is even" : null}
+  </div>
+}
+```
+we have used useMemo because direct function likhna is not optimal, it should only be called when count changes
+
+new recoil way using selectors - (same usage as above)
+```jsx
+// in atoms file 
+export const evenSelector = selector({
+    key : 'evenSelector',
+    get : ({ get })=>{
+        const count = get(countAtom);
+        return count % 2 == 0;
+    }
+})
+
+// in app file
+function EvenCountRenderer() {
+  const isEven = useRecoilValue(evenSelector);
+  
+  return <div>
+    {isEven ? "It is even" : null}
+  </div>
+}
+```
+
