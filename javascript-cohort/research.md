@@ -1,3 +1,7 @@
  - wahat is webhook brah
  - what is mono repo on github
- - react-query, react-form
+ - react-query, react-form for using forms and getting values from inputs
+ - zustand for state management instead of recoil
+ - learn Material UI, Aceternity UI
+ - storybook.js for frontend
+ - webrtc

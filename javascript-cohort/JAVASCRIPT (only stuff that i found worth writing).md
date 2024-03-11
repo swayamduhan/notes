@@ -404,7 +404,7 @@ here's an example
 this can be done easily using `axios` done later
 - we can use async/await for easier code lmao, forgive me for using promises
 
-### Debouncing
+## Debouncing
 example : on amazon webpage, as you are typing in the bar you keep getting new suggestions (the backend is getting hit with every keystroke)
 now if you are typing something very fast then there are no such suggestions and we get suggestions only after we typed
 this is called DEBOUNCING and is used to reduce backend calls
@@ -449,3 +449,9 @@ example : you create a frontend to get sum of number on every keystroke it will 
 - the backend will return a state of the data when fetched after every interval using `setInterval`
 - according to the json data, display items on the screen
 - better solution - instead of clearing whole data and putting the updated data back on the screen, we should calculate the difference between new and old data and only update what needs to be updated (VIRTUAL DOM - where we have the blueprint of the DOM). this is how react works
+
+
+## How to sleep the thread
+```js
+await new Promise(r=>setTimeout(r, 5000)) // it sleeps for 5 seconds
+```

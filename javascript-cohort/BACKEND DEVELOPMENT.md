@@ -411,3 +411,11 @@ and in the main file, do `app.use("/route", importedRouter)`
 `npm install cors`
 `app.use(cors())`
 this will make your backend slightly insecure and now any frontend can hit this backend
+
+## Atomic Transaction?
+it is a tx where you either want it to completely finish or not do something at all, if it gets partially done then that would be a problem
+example : a bank
+if you deduct from one place but dont credit at the other end then thats an issue
+or if the server goes down in between then that needs to be handled
+
+so to fix this, we need to perform various checks and safety for it to complete

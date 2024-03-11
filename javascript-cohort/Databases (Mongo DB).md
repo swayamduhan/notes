@@ -151,3 +151,115 @@ this will push a new book id to the bookIds array in the entry of author with na
 CLUSTER? - eg an AWS machine to store all databases
 DATABASES? - every application has its own database and it contains further tables
 TABLES? - they contain the data for sum' specific shit
+
+
+
+## Querying / Filtering
+example : returning all the users containing "swa" in either first name or last name
+we use `$or, $regex` to handle this filtering.
+we also have `$and` for more cases
+
+```js
+const users = await User.find({
+    $or: [
+      {
+        firstName: {
+          $regex: filter,
+          $options : 'i'
+        },
+      },
+      {
+        lastName: {
+          $regex: filter,  // to handle if beech wale letters
+          $options : 'i'  // for case insensitivity
+        },
+      },
+    ],
+  });
+  
+  return res.json({
+    user: users.map((user) => {
+      return {
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        _id : user._id
+      };
+    }),
+  });
+```
+
+- in SQL Databases, we have `LIKE` querying
+
+
+
+## Atomic Transactions
+
+-------------- Read Here --------------
+[[BACKEND DEVELOPMENT#Atomic Transaction?]]
+
+
+
+## Creating Txs in MongoDB
+what happens in a tx?
+either everything happens or nothing happens in the code that is mentioned, this is for safety in especially cases where money transfers are involved, if the backend goes down inbetween we want the money to be reverted
+you can [read here](https://mongoosejs.com/docs/transactions.html)
+
+- everything between `startTransaction` and `commitTransaction` is in the tx
+- you need to start a session at the starting
+- everytime you do a find,update (any db operation) : do a `.session(session)`
+
+here is the code : 
+```js
+router.post("/transfer", authMiddleware, async (req, res) => {
+  const { success } = transferSchema.safeParse(req.body);
+  if (!success) {
+    return res.json({
+      message: "invalid inputs",
+    });
+  }
+  
+  const session = await mongoose.startSession();
+  session.startTransaction();
+  const { amount, to } = req.body;
+  const fromAccount = await Account.findOne({ userId: req.userId }).session(
+    session
+  );
+  
+  if (!fromAccount || fromAccount.balance < amount) {
+    await session.abortTransaction();
+    return res.status(400).json({
+      message: "insufficient balance",
+    });
+  }
+  
+  const toAccount = await Account.findOne({ userId: to });
+  if (!toAccount) {
+    await session.abortTransaction();
+    return res.status(400).json({
+      message: "invalid account",
+    });
+  }
+  
+  await Account.updateOne(
+    { userId: req.userId },
+    { $inc: { balance: -amount } }
+  ).session(session);
+  
+  await Account.updateOne(
+    { userId: to },
+    { $inc: { balance: amount } }
+  ).session(session);
+  
+  await session.commitTransaction();
+  res.status(200).json({
+    message: "transaction completed",
+  });
+});
+```
+
+**COOL SHIT ACHIEVED :**
+1. if user tries to exploit payment app by sending 2 tx at once and doing exploitation in balance, it will be solved because user wont be able to send 2 tx at once
+   what happens is if lets suppose the current tx that is running, another tx starts running which wants to read/write to the same stuff that the first tx is running then that would make a conflict and wont happen 
+1. if backend kharab hojata beech mein or if tx fails to go through, then whole tx will be reverted
+

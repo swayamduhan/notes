@@ -49,7 +49,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "solidity/SOLIDITY STUFF.md",
+                "file": "solana/02 - building.md",
                 "mode": "source",
                 "source": false
               }
@@ -122,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "solidity/SOLIDITY STUFF.md",
+                "file": "solana/02 - building.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "solidity/SOLIDITY STUFF.md",
+                "file": "solana/02 - building.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "solidity/SOLIDITY STUFF.md"
+                "file": "solana/02 - building.md"
               }
             }
           }
@@ -185,13 +185,13 @@
   },
   "active": "3e01b54d66ccab55",
   "lastOpenFiles": [
-    "solidity/AVALANCHE CHAIN (AVAX).md",
-    "solana/02 - building.md",
     "solana/01 - intro.md",
+    "solana/02 - building.md",
+    "solidity/AVALANCHE CHAIN (AVAX).md",
+    "solidity/SOLIDITY STUFF.md",
     "www.solanacookbook.com.md",
     "Untitled",
     "solana",
-    "building on solana.md",
-    "solidity/SOLIDITY STUFF.md"
+    "building on solana.md"
   ]
 }

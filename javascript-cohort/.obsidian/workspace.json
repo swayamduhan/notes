@@ -30,9 +30,33 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "3fb8b57d31c1fd5a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Cool Shit.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "3e56ecf623de95b3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "React.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -159,17 +183,22 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "dacfe4961501a640",
+  "active": "3e56ecf623de95b3",
   "lastOpenFiles": [
-    "SOME BASIC METHODS.md",
-    "research.md",
-    "React.md",
+    "BACKEND DEVELOPMENT.md",
     "ALL INSTALLATIONS.md",
     "BASH and Commands.md",
-    "Databases.md",
+    "Cool Shit.md",
+    "Databases (Mongo DB).md",
     "Git and GitHub.md",
     "JAVASCRIPT (only stuff that i found worth writing).md",
-    "BACKEND DEVELOPMENT.md",
+    "React.md",
+    "tips to create a project from scratch.md",
+    "SOME BASIC METHODS.md",
+    "research.md",
+    "[[BACKEND.md",
+    "[BACKEND.md",
+    "().md",
     "jwt.io.md",
     "Untitled.canvas",
     "2023-12-20.md",

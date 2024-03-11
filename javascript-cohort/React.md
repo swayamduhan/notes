@@ -646,6 +646,8 @@ function TopBar(){
 ```
 - you can only use navigate inside a component that is inside BrowserRoutes, bahar nahi chalega 
 
+**NOTE :** instead of useNavigate, you can also use `<Link></Link>` to go from one place to another
+
 ## lazy loading
 it means slowly giving the client the code for the page they are visiting instead of poora code bundle ek sath pakda dena
 change in way of importing
@@ -696,6 +698,8 @@ function TopBar(){
 
 export default App
 ```
+
+- you can use Suspense without the routing and lazy loading too, it is just that iss case mein chaiye hota hai Suspense API
 
 ## prop drilling and fix using Context API
 if a state is stored in a higher ancestor and needs to be passed to the lowest child aur jo beech mein components aa rahe hain unko zarurat nahi hai un props ki bas neeche bhej rahe hain,
@@ -824,7 +828,7 @@ export default App
 you would assume that when you have teleported the props down then only the components that are using the context should re-render but that doesnt happen. the app doesnt get more optimal using context, it is just for cleaner code. jab parent re-render hoga to saare children honge as usual
 so to tackle this, we use Recoil for State Management
 
-## recoil for state management
+## recoil for state management + async queries
 - it is better than context and gets rid of unnecessary re-renders
 - we will define our state and components in different folders
 - Recoil is a state management library
@@ -899,3 +903,85 @@ function EvenCountRenderer() {
 }
 ```
 
+- you can combine your many atoms into one in this way : 
+```jsx
+export const notifications = atom({
+    key: "networkAtom",
+    default: {
+        network: 4,
+        jobs: 6,
+        messaging: 3,
+        notifications: 3
+    }
+}); // creating an object
+```
+
+
+**ASYNCHRONOUS DATA QUERIES** (getting values from backend)
+selectors can be used as a way to incorporate asynchronous stuff in the recoil data flow
+this is a better way than using `useEffect` as it handles that slight delay in getting data where wrong data gets shown for a while
+
+this is how to implement if your default value is coming from backend, your default field cannot directly be an async function
+```jsx
+export const notifications = atom({
+  key: "networkAtom",
+  default: selector({
+    key: "networkAtomSelector",
+    get: async () => {
+      const res = await axios.get(
+        "https://sum-server.100xdevs.com/notifications"
+      );
+      return res.data;
+    },
+  }),
+});
+```
+
+## advanced recoil deep dive
+
+**ATOM FAMILY** :
+we can dynamically create atoms using `atomFamily`
+example of accessing an atom from the family :
+`const currentTodo = useRecoilValue(todosAtomFamily(id))`
+
+_creating a family_ : 
+```js
+import { atomFamily } from "recoil";
+import { TODOS } from "./todos";
+  
+export const todosAtomFamily = atomFamily({
+  key: 'todosAtomFamily',
+  default: id => {
+    return TODOS.find(x => x.id === id)
+  },
+});
+```
+
+you may think, you can go by an easier way by putting all the TODOS inside an atom and simply access the todo using the id and put it inside the component
+the downside to this : whenever even a single todo changes all the components that are using the todo atom will re-render
+while if you use atomFamily, only the certain todo that changes sirf ussi ka component re-render hoga
+
+- an `atomFamily` returns an `atom`
+
+**SELECTOR FAMILY** : 
+now what if you want to get your todos from the backend instead of the previous atomFamily example where you had your todos hardcoded with you
+example : user gives you id and you have to hit the backend and render the todo with that id
+
+
+jaise atom ke andar fetch krne ke liye selector use krte the vaise hi atomFamily mein selectorFamily use krenge
+
+
+**useRecoilStateLoadable AND useRecoilValueLoadable** : 
+what will happen when your atom is hitting a backend call and you don't get the values immediately to phir tab tak kya krenge ??? LOADING
+one way to do this was using the `<Suspense>` API along with lazy loading
+the other way is this - 
+- instead of `useRecoilState`, do `useRecoilStateLoadable` - it returns an array containing your item and setItem aur phir item further has a object containing `contents` and `state` 
+- state matlab abhi load hua hai ya nahi, state can be either `loading` or `hasValue` and `hasError` if backend call fails
+- contents mein tumhare atom ka maal hai
+
+Note : a very good thing to add for loading is a skeleton (`mui` react skeleton component)
+
+- `useRecoilValueLoadable` if sirf value chaiye
+
+
+- another way for handling errors in backend requests is `errorBoundary` 
