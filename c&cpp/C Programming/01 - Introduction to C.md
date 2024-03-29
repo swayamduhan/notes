@@ -892,6 +892,19 @@ int main()
 }
 ```
 
+# Pointer to a Pointer
+we need multiple star levels to define pointers to a pointer
+
+```c
+int num = 80;
+int *p = &num;
+int **q = &p;
+int ***r = &q;
+
+printf("%d ", ***r);
+printf("%d ", **q);
+printf("%d ", *p);
+```
 # File Handling
 1. **OPENING AND CLOSING A FILE**
 ```c
@@ -1043,6 +1056,5 @@ int main()
 
 
 
-
-
-
+# Dynamic Memory Allocation
+`malloc` and `calloc` 

@@ -49,7 +49,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "React.md",
+                "file": "tips to create a project from scratch.md",
                 "mode": "source",
                 "source": false
               }
@@ -122,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "React.md",
+                "file": "tips to create a project from scratch.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "React.md",
+                "file": "tips to create a project from scratch.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -162,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "React.md"
+                "file": "tips to create a project from scratch.md"
               }
             }
           }
@@ -185,14 +185,14 @@
   },
   "active": "3e56ecf623de95b3",
   "lastOpenFiles": [
+    "React.md",
+    "JAVASCRIPT (only stuff that i found worth writing).md",
+    "Git and GitHub.md",
+    "Cool Shit.md",
     "BACKEND DEVELOPMENT.md",
     "ALL INSTALLATIONS.md",
-    "BASH and Commands.md",
-    "Cool Shit.md",
     "Databases (Mongo DB).md",
-    "Git and GitHub.md",
-    "JAVASCRIPT (only stuff that i found worth writing).md",
-    "React.md",
+    "BASH and Commands.md",
     "tips to create a project from scratch.md",
     "SOME BASIC METHODS.md",
     "research.md",

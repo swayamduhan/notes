@@ -547,7 +547,7 @@ so this is the only wayin ea
 
 
 
-## routing
+## routing ( react - router - dom)
 in pre-react days, getting a route on a page you would send req to backend and it would appear and then if you switch to messages you would again send a req to get whole of html css js back and do a hard reload of the page
 
 in react, it is a *single-page application*, all the stuff gets back in the first request and routes are handled by react, you are just changing the view instead of hard reload
@@ -647,6 +647,10 @@ function TopBar(){
 - you can only use navigate inside a component that is inside BrowserRoutes, bahar nahi chalega 
 
 **NOTE :** instead of useNavigate, you can also use `<Link></Link>` to go from one place to another
+
+**MORE FUNCTIONALITIES** : 
+you can pass data to the next route using query params in the web address and access it using react-router
+look docs for cool shit
 
 ## lazy loading
 it means slowly giving the client the code for the page they are visiting instead of poora code bundle ek sath pakda dena
